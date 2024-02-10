@@ -37,11 +37,12 @@ def generate_date_range(year_range):
         for month_index, month_name in enumerate(month_names):
             # Generate a formatted date string for each month
             if month_index <= 8:
-                date_string = f"{counter}-{month_name} {year}"
-                dates_in_range.append(date_string)
-                counter += 1
+                if counter < 10:
+                    date_string = f"{0}{counter} - {month_name} {year}"
+                    dates_in_range.append(date_string)
+                    counter += 1
             if month_index > 8:
-                date_string = f"{counter}-{month_name} {year+1}"
+                date_string = f"{counter} - {month_name} {year+1}"
                 dates_in_range.append(date_string)
                 counter += 1
     
@@ -51,14 +52,14 @@ def generate_date_range(year_range):
 # Get start year and end year from the user
 start_year = int(input("Type start year please (format yyyy): "))
 end_year = int(input("Type end year (format yyyy): "))
-
+parent_directory = input("Name your parent directory: ")
 # Generate year ranges
 year_ranges = generate_year_range(start_year, end_year)
 
 # Iterate through each generated year range
 for year_range in year_ranges:
     # Define the parent directory where folders will be created for the current year range
-    parent_directory = "./finance_years"
+    parent_directory = "./" + parent_directory
     folder_path = os.path.join(parent_directory, year_range)
     
     # Create parent directory if it doesn't exist
@@ -68,7 +69,7 @@ for year_range in year_ranges:
     else:
         print(f"Folder '{year_range}' already exists at path '{folder_path}'. Skipping creation.")
     
-    # Generate date range for the current year range
+    #Generate date range for the current year range
     date_range = generate_date_range(year_range)
     
     # Iterate through each generated date in the date range
