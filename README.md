@@ -1,6 +1,6 @@
 # Finance Year Folder Generator
 
-This Python script (`make_folders_by_year_progression.py`) is designed to generate a folder structure corresponding to financial years, with subfolders representing each month within the financial year.
+This Python script (`generate_folder_subfolder_bydate.py`) is designed to generate a folder structure corresponding to financial years, with subfolders representing each month within the financial year.
 
 ## How to Use
 
